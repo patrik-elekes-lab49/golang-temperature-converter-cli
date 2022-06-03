@@ -17,7 +17,20 @@ var errInvalidArguments = errors.New("Invalid arguments")
 var errReadingInput = errors.New("Error reading input")
 
 func main() {
-
+	// 2/1	Validate arguments
+	// To start, let's open the main.go file. This is the only file we will need to edit throughout 
+	// this Project.
+	// Find the main() function definition. On the very first line inside this function, use the 
+	// built-in len function to check if the length of os.Args is different than 2. If so, invoke 
+	// the printError() function, passing errInvalidArguments as the argument.
+	if (len(os.Args) != 2) {
+		printError(errInvalidArguments)
+	}
+	// 2/2 Read origin unit
+	// Below the if statement we just wrote, invoke the strings.ToUpper() function passing os.Args[1] 
+	// as the argument. This ensures consistency when reading command line arguments provided by the user. 
+	// Assign the result to the previously defined originUnit variable.
+	originUnit = strings.ToUpper(os.Args[1])
 	for {
 		fmt.Print("What is the current temperature in " + originUnit + " ? ")
 
@@ -29,6 +42,8 @@ func main() {
 		}
 	}
 }
+
+
 
 func printError(err error) {
 	fmt.Fprintf(os.Stderr, "error: %v\n", err)
